@@ -1,0 +1,7 @@
+<h2>{% if airline %}Edit{% else %}Add{% endif %} Airline</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'airlines:list' %}">Back to list</a>

@@ -1,0 +1,21 @@
+<h2>Airlines</h2>
+<a href="{% url 'airlines:create' %}">Add New Airline</a>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Country</th>
+        <th>Actions</th>
+    </tr>
+    {% for airline in airlines %}
+    <tr>
+        <td>{{ airline.name }}</td>
+        <td>{{ airline.code }}</td>
+        <td>{{ airline.country }}</td>
+        <td>
+            <a href="{% url 'airlines:edit' airline.pk %}">Edit</a> |
+            <a href="{% url 'airlines:delete' airline.pk %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

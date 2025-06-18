@@ -1,0 +1,45 @@
+<h2>Confirm Deletion</h2>
+<p>Are you sure you want to delete "{{ airline.name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+</form>
+<a href="{% url 'airlines:list' %}">Cancel</a>
+<style>
+    body {
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+    }
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+    p {
+        text-align: center;
+        color: #555;
+    }
+    form {
+        text-align: center;
+        margin-top: 20px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #c9302c;
+    }
+    a {
+        display: inline-block;
+        margin-top: 10px;
+        color: #007BFF;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
