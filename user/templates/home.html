@@ -2,17 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flight Management System - Home</title>
+    <title>Admin Home - Flight Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f5f5f5; }
+        nav { background-color: #007BFF; padding: 15px; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        nav li { margin-right: 20px; }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        .container { padding: 30px; }
+    </style>
 </head>
 <body>
-    <h1>Welcome, {{ user.username }}!</h1>
-
-    <p>You are logged in as <strong>{{ user.email }}</strong>.</p>
-
-    {% if user.is_authenticated %}
-        <p>Your user type: {{ user.user_type.user_type_name }}</p>
-    {% else %}
-        <p>You are not logged in. <a href="{% url 'login' %}">Login</a></p>
-    {% endif %}
+    <nav>
+        <ul>
+            <li><a href="#">Airlines</a></li>
+            <li><a href="#">Flights</a></li>
+            <li><a href="#">Bookings</a></li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Welcome Admin!</h1>
+        <p>Manage flights, airlines, and bookings from the navigation above.</p>
+    </div>
 </body>
 </html>
