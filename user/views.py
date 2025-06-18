@@ -8,17 +8,19 @@ from django.utils.decorators import method_decorator
 
 
 class RegisterView(View):
-    def get(self, request):
+    def get(self, request, user_type):
         form = UserRegistrationForm()
-        return render(request, "register.html", {"form": form})
+        return render(request, "register.html", {"form": form, "user_type": user_type})
 
-    def post(self, request):
-        form = UserRegistrationForm(request.POST)
+    def post(self, request, user_type):
+        data = request.POST.copy()
+        data["user_type"] = user_type.capitalize()
+        form = UserRegistrationForm(data)
         if form.is_valid():
             form.save()
             # Redirect to login or homepage after successful registration
             return redirect("login")
-        return render(request, "register.html", {"form": form})
+        return render(request, "register.html", {"form": form, "user_type": user_type})
 
 
 class LoginView(View):
