@@ -70,11 +70,14 @@ class UserSerializer(serializers.ModelSerializer):
 
         # Validate user_type
         user_type_name = validated_data.pop("user_type")
-        user_type = UserType.objects.filter(user_type_name=user_type_name).first()
 
-        if not user_type:
+        if user_type_name not in self.USER_TYPE_CHOICES:
             raise serializers.ValidationError({"user_type": ["Invalid user type."]})
 
+        user_type, created = UserType.objects.get_or_create(
+            user_type_name=user_type_name,
+            defaults={"description": f"{user_type_name} account"},
+        )
         # Determine if the user should be an admin
         is_admin = user_type_name == "Admin"
 
