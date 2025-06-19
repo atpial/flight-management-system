@@ -56,7 +56,7 @@
             {{ form.as_p }}
             <button type="submit">Save</button>
         </form>
-        <a href="{% url 'airlines:list' %}">Back to list</a>
+        <a href="{% url 'flight:airlines_list' %}">Back to list</a>
     </div>
     {% if form.errors %}
         <div class="error">

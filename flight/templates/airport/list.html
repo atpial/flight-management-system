@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airlines List</title>
+    <title>Airport List</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,34 +50,34 @@
 </head>
 <body>
     <div class="container">
-    <h2>Airlines</h2>
-    <button><a href="{% url 'flight:airlines_create' %}">Add New Airline</a></button>
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Country</th>
-            <th>Description</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            <th>Actions</th>
-        </tr>
-        {% for airline in airlines %}
-        <tr>
-            <td>{{ airline.name }}</td>
-            <td>{{ airline.code }}</td>
-            <td>{{ airline.country }}</td>
-            <td>{{ airline.description }}</td>
-            <td>{{ airline.created_at }}</td>
-            <td>{{ airline.updated_at }}</td>
-            <td>
-                <button><a href="{% url 'flight:airlines_edit' airline.pk %}">Edit</a></button> |
-                <button><a href="{% url 'flight:airlines_delete' airline.pk %}">Delete</a></button>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+        <h2>Airport List</h2>
+        <button><a href="{% url 'flight:airports_create' %}">Add New Airport</a></button>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Actions</th>
+            </tr>
+            {% for airport in airports %}
+            <tr>
+                <td>{{ airport.name }}</td>
+                <td>{{ airport.code }}</td>
+                <td>{{ airport.city }}</td>
+                <td>{{ airport.country }}</td>
+                <td>{{ airport.created_at }}</td>
+                <td>{{ airport.updated_at }}</td>
+                <td>
+                    <button><a href="{% url 'flight:airports_edit' airport.pk %}">Edit</a></button>
+                    <button><a href="{% url 'flight:airports_delete' airport.pk %}">Delete</a></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{% url 'home' %}">Home</a>
     </div>
-    <a href="{% url 'home' %}">Back to Home</a>
 </body>
 </html>

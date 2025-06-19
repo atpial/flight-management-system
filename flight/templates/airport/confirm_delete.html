@@ -1,10 +1,10 @@
 <h2>Confirm Deletion</h2>
-<p>Are you sure you want to delete "{{ airline.name }}"?</p>
+<p>Are you sure you want to delete "{{ airport.name }}"?</p>
 <form method="post">
     {% csrf_token %}
     <button type="submit">Yes, delete</button>
 </form>
-<a href="{% url 'flight:airlines_list' %}">Cancel</a>
+<a href="{% url 'flight:airports_list' %}">Cancel</a>
 <style>
     body {
         background-color: #f4f4f4;
