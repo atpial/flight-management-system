@@ -8,6 +8,11 @@ from .views import (
     AirportCreateView,
     AirportUpdateView,
     AirportDeleteView,
+    FlightCreateView,
+    FlightDeleteView,
+    FlightListView,
+    FlightSearchView,
+    FlightUpdateView,
 )
 
 app_name = "flight"
@@ -27,4 +32,10 @@ urlpatterns = [
     path(
         "airports/<int:pk>/delete/", AirportDeleteView.as_view(), name="airports_delete"
     ),
+    # Flight URLs
+    path("flights/", FlightListView.as_view(), name="flights_list"),
+    path("flights/create/", FlightCreateView.as_view(), name="flights_create"),
+    path("flights/<int:pk>/edit/", FlightUpdateView.as_view(), name="flights_edit"),
+    path("flights/<int:pk>/delete/", FlightDeleteView.as_view(), name="flights_delete"),
+    path("flights/search/", FlightSearchView.as_view(), name="flights_search"),
 ]

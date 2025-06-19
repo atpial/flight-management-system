@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Search Flights</h2>
+
+<form method="get" action="{% url 'flight:flights_search' %}">
+    <div>
+        {{ form.flight_number.label_tag }}<br>
+        {{ form.flight_number }}
+    </div>
+    <div>
+        {{ form.airline.label_tag }}<br>
+        {{ form.airline }}
+    </div>
+    <div>
+        {{ form.destination.label_tag }}<br>
+        {{ form.destination }}
+    </div>
+    <button type="submit">Search</button>
+</form>
+
+{% if flights %}
+    <h3>Search Results:</h3>
+    <table>
+        <tr>
+            <th>Flight No</th>
+            <th>Airline</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+        </tr>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight.flight_number }}</td>
+            <td>{{ flight.airline.name }}</td>
+            <td>{{ flight.departure_airport.name }}</td>
+            <td>{{ flight.arrival_airport.name }}</td>
+            <td>{{ flight.departure_time }}</td>
+            <td>{{ flight.arrival_time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'flight:flights_list' %}">Back to Flight List</a>
+{% elif form.is_bound %}
+    <p>No flights found matching your criteria.</p>
+{% endif %}
+{% endblock %}

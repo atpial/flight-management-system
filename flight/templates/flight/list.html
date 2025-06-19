@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Flights{% endblock %}
+
+{% block content %}
+    <h2>Flights</h2>
+    {% if request.user.is_authenticated and request.user.user_type.user_type_name == "Admin" %}
+        <button><a href="{% url 'flight:flights_create' %}">Add New Flight</a></button>
+    {% endif %}
+    <button><a href="{% url 'flight:flights_search' %}">Search Flights</a></button>
+    <table border="1">
+            <tr>
+                <th>Flight Number</th>
+                <th>Airline</th>
+                <th>Departure Airport</th>
+                <th>Arrival Airport</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight.flight_number }}</td>
+                <td>{{ flight.airline.name }}</td>
+                <td>{{ flight.departure_airport.name }}</td>
+                <td>{{ flight.arrival_airport.name }}</td>
+                <td>{{ flight.departure_time }}</td>
+                <td>{{ flight.arrival_time }}</td>
+                <td>{{ flight.duration }}</td>
+                <td>{{ flight.price }}</td>
+                <td>
+                    <button><a href="{% url 'flight:flights_edit' flight.pk %}">Edit</a></button>
+                    <button><a href="{% url 'flight:flights_delete' flight.pk %}">Delete</a></button>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+    <a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}

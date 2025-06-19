@@ -20,9 +20,11 @@
                 <li><a href="{% url 'flight:airports_list' %}">Airports</a></li>
                 <li><a href="#">Customers</a></li>
             {% endif %}
-            <li><a href="#">Flights</a></li>
+            <li><a href="{% url 'flight:flights_list' %}">Flights</a></li>
             <li><a href="#">Bookings</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="{% url 'flight:flights_search' %}">Search Flights</a></li>
+
         </ul>
     </nav>
     <div class="container">
